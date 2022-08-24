@@ -1,4 +1,4 @@
-name: Main
+name: Rspec
 
 on: [push]
 
@@ -52,6 +52,9 @@ jobs:
       - name: Create DB
         run: |
           bin/rails db:prepare
+      - name: Precompile CSS
+        run: |
+          yarn build:css
       - name: Run tests
         run: |
           bundle exec rspec
