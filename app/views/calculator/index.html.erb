@@ -1,2 +1,54 @@
-<h1>Calculator#index</h1>
-<p>Find me in app/views/calculator/index.html.erb</p>
+<div class="row">
+  <div id="calculator" class="col-md-6 ps-4" >
+    <form>
+      <div class="row">
+        <div class="col">
+          <div class="mb-3">
+            <label for="property-price" class="form-label">Property Price</label>
+            <div class="input-group">
+              <span class="input-group-text">$</span>
+              <input type="text" class="form-control" id="exampleInputName" placeholder="100,000" required>
+            </div>
+            <div class="form-text">Total amount of money you want to loan</div>
+          </div>
+          <div class="mb-3">
+            <label for="down-payment" class="form-label">Down Payment</label>
+            <input type="email" class="form-control" id="down-payment" aria-describedby="emailHelp">
+          </div>
+          <div class="mb-3">
+            <label for="annual-interest-rate" class="form-label">Annual Interest Rate</label>
+            <select class="form-select" id="annual-interest-rate">
+              <option>5</option>
+              <option>10</option>
+              <option>15</option>
+              <option>20</option>
+              <option>25</option>
+              <option>30</option>
+            </select>
+          </div>
+
+        </div>
+        <div class="col">
+          <div class="mb-3">
+            <label for="payment-schedule" class="form-label">Payment Schedule</label>
+            <select class="form-select" id="payment-schedule">
+              <option>Monthly</option>
+              <option>Bi-weekly</option>
+              <option>Accelerated bi-weekly</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="payment-per-payment" class="form-label">Perment per payment period</label>
+            <input type="email" class="form-control" id="payment-per-payment" aria-describedby="emailHelp">
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+
+  <div id="results" class="col-md-6">
+    Results of calculations
+  </div>
+</div>
