@@ -1,5 +1,5 @@
 class Mortgage < ApplicationRecord
-  AMORTIZATION_PERIOD_OPTIONS = [5, 10, 15, 20, 25, 30] # Years of mortgage
+  AMORTIZATION_PERIOD_OPTIONS = [5, 10, 15, 20, 25, 30] # Years of mortgages
 
   attr_accessor :down_payment, :payment_schedule, :amortization_period
 
