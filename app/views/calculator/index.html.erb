@@ -7,7 +7,7 @@
             <label for="property-price" class="form-label">Property Price</label>
             <div class="input-group">
               <span class="input-group-text">$</span>
-              <input type="text" class="form-control" id="exampleInputName" placeholder="100,000" required>
+              <input type="text" class="form-control" id="property-price" placeholder="100,000" required>
             </div>
             <div class="form-text">Total amount of money you want to loan</div>
           </div>
@@ -17,18 +17,21 @@
           </div>
           <div class="mb-3">
             <label for="annual-interest-rate" class="form-label">Annual Interest Rate</label>
-            <select class="form-select" id="annual-interest-rate">
-              <option>5</option>
-              <option>10</option>
-              <option>15</option>
-              <option>20</option>
-              <option>25</option>
-              <option>30</option>
-            </select>
+            <input type="email" class="form-control" id="annual-interest-rate" aria-describedby="emailHelp">
           </div>
-
         </div>
         <div class="col">
+          <div class="mb-3">
+            <label for="amortization-period" class="form-label">Amortization Period</label>
+            <select class="form-select" id="amortization-period">
+              <option>5 Years</option>
+              <option>10 Years</option>
+              <option>15 Years</option>
+              <option>20 Years</option>
+              <option>25 Years</option>
+              <option>30 Years</option>
+            </select>
+          </div>
           <div class="mb-3">
             <label for="payment-schedule" class="form-label">Payment Schedule</label>
             <select class="form-select" id="payment-schedule">
