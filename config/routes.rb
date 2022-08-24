@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'calculator/index'
+  resources :mortgages, only: [:new, :create]
 
-  root 'calculator#index'
+  root 'mortgages#new'
 end
