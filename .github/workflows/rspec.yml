@@ -58,6 +58,9 @@ jobs:
       - uses: borales/actions-yarn@v3.0.0
         with:
           cmd: build:css # will run `yarn build` command
+      - uses: borales/actions-yarn@v3.0.0
+        with:
+         cmd: build:js # will run `yarn build` command
       - name: Run tests
         run: |
           bundle exec rspec
