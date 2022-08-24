@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'calculator/index'
+  get 'calculator/new'
 
-  root 'calculator#index'
+  root 'calculator#new'
 end

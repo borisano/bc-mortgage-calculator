@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "calculator/index.html.erb", type: :view do
+RSpec.describe "calculator/new.html.erb", type: :view do
   describe '#index' do
     before do
 
