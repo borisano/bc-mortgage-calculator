@@ -44,7 +44,7 @@ class Mortgage < ApplicationRecord
   end
 
   def calculate_total_loan_amount
-    self.total_loan_amount = property_price - down_payment #TODO add insurance
+    self.total_loan_amount = property_price - down_payment + get_insurance_value
   end
 
 
@@ -74,8 +74,28 @@ class Mortgage < ApplicationRecord
   end
 
   def payment_per_year
-    total_loan_amount = property_price #TODO - add insurance here
+    self.total_loan_amount / self.amortization_period
+  end
 
+
+  def get_insurance_value
+    #down payment percent
+    percent = ((down_payment / property_price) * 100).to_i
+    case percent
+    when 0..5
+      20
+    when 5...10
+      10
+    when 10...20
+      5
+    else
+      0
+    end
+
+    self.insurance_percent = percent
+    self.insurance_value = property_price * percent / 100
+
+    self.insurance_value
   end
 
 end
