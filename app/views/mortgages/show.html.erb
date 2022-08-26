@@ -7,27 +7,17 @@
       <tr>
         <th scope="row">1</th>
         <td>Mortgage Amount</td>
-        <td>123</td>
+        <td><%= @mortgage.property_price %></td>
       </tr>
       <tr>
         <th scope="row">2</th>
         <td>Annual %</td>
-        <td>12%</td>
+        <td><%= @mortgage.annual_interest_rate %>%</td>
       </tr>
       <tr>
         <th scope="row">3</th>
         <td>Amortization Period</td>
-        <td>the Bird</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>Payment Schedule</td>
-        <td>the Bird</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Payment Per Period</td>
-        <td>the Bird</td>
+        <td><%= @mortgage.amortization_period %> years</td>
       </tr>
       </tbody>
     </table>
