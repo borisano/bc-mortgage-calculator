@@ -7,10 +7,12 @@ class Mortgage < ApplicationRecord
   validates_presence_of :annual_interest_rate
   validates_presence_of :payment_per_payment
   validate :correct_amortization_period
+  validates :down_payment, comparison: { less_than: :property_price }
 
   enum payment_schedule: [:monthly, :bi_weekly, :acc_bi_weekly]
 
   before_validation :cast_amortization_period_to_number
+  before_validation :calculate_payments
 
   def self.amortization_period_collection
     collection = []
@@ -36,6 +38,10 @@ class Mortgage < ApplicationRecord
 
   def cast_amortization_period_to_number
     self.amortization_period = self.amortization_period&.to_i
+  end
+
+  def calculate_payments
+    self.payment_per_payment = 10
   end
 
 end
