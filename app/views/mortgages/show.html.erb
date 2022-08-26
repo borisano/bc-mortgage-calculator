@@ -7,12 +7,12 @@
       <tr>
         <th scope="row">1</th>
         <td>Mortgage Amount</td>
-        <td><%= @mortgage.property_price %></td>
+        <td><%= number_to_currency @mortgage.property_price %></td>
       </tr>
       <tr>
         <th scope="row">1</th>
         <td>Down Payment</td>
-        <td><%= @mortgage.down_payment %></td>
+        <td><%= number_to_currency @mortgage.down_payment %></td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -32,8 +32,36 @@
       </tbody>
     </table>
   </div>
-  <div class="col col-md-8">
+  <div id="results" class="col-md-8">
     <h4>Results of calculations:</h4>
-
+    <table class="table table-striped">
+      <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>Insurance Percent</td>
+        <td><%= @mortgage.insurance_percent %>%</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Insurance Value</td>
+        <td><%= number_to_currency @mortgage.insurance_value.to_i %></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Total Loan Amount %</td>
+        <td><%= number_to_currency @mortgage.total_loan_amount %></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Nb of Payments</td>
+        <td><%= @mortgage.nb_of_payments_total %></td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>Payment per period</td>
+        <td><%= number_to_currency @mortgage.payment_per_payment %></td>
+      </tr>
+      </tbody>
+    </table>
   </div>
 </div>

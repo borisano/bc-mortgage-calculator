@@ -31,6 +31,10 @@ class Mortgage < ApplicationRecord
     self.payment_per_payment = p * ( ( r * (1+r)**n ) / ( ((1+r)**n) + 1 ) )
   end
 
+  def nb_of_payments_total
+    nb_of_payments_per_year * amortization_period
+  end
+
   protected
 
   def correct_amortization_period
@@ -58,10 +62,6 @@ class Mortgage < ApplicationRecord
     when 'acc_bi_weekly'
       26
     end
-  end
-
-  def nb_of_payments_total
-    nb_of_payments_per_year * amortization_period
   end
 
   def per_payment_schedule_interest_rate
