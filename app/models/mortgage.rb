@@ -10,6 +10,7 @@ class Mortgage < ApplicationRecord
 
   enum payment_schedule: [:monthly, :bi_weekly, :acc_bi_weekly]
 
+  before_validation :cast_amortization_period_to_number
 
   def self.amortization_period_collection
     collection = []
@@ -26,6 +27,10 @@ class Mortgage < ApplicationRecord
     unless AMORTIZATION_PERIOD_OPTIONS.include? amortization_period
       errors.add :amortization_period, "Incorrect amortization period"
     end
+  end
+
+  def cast_amortization_period_to_number
+    self.amortization_period = self.amortization_period&.to_i
   end
 
 end
