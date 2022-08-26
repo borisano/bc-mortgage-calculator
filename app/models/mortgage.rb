@@ -69,10 +69,6 @@ class Mortgage < ApplicationRecord
   end
 
 
-  def nb_of_payments_total
-    nb_of_payments_per_year * amortization_period
-  end
-
   def payment_per_year
     self.total_loan_amount / self.amortization_period
   end
