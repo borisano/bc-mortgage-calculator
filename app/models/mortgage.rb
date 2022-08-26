@@ -21,6 +21,11 @@ class Mortgage < ApplicationRecord
     collection
   end
 
+  #I experience very weird bug with enum not returning correct value. This is a dirty hack to make it work as expected.
+  def payment_schedule_val
+    Mortgage.payment_schedules.key read_attribute_before_type_cast(:payment_schedule)
+  end
+
   protected
 
   def correct_amortization_period
