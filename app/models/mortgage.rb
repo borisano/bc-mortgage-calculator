@@ -31,7 +31,7 @@ class Mortgage < ApplicationRecord
     self.payment_per_payment = p * ( ( r * (1+r)**n ) / ( ((1+r)**n) + 1 ) )
   end
 
-  #protected
+  protected
 
   def correct_amortization_period
     unless AMORTIZATION_PERIOD_OPTIONS.include? amortization_period
