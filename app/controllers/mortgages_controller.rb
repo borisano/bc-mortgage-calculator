@@ -8,11 +8,15 @@ class MortgagesController < ApplicationController
 
     if @mortgage.save
       flash[:notice] = "Your Mortgage was created"
-      redirect_to action: :index
+      redirect_to edit_mortgage_path(@mortgage.to_param)
     else
       flash[:alert] = "Your Mortgage was not created. Please fix the errors"
       render :new
     end
+  end
+
+  def edit
+
   end
 
 
