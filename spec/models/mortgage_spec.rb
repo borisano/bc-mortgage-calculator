@@ -26,6 +26,14 @@ RSpec.describe Mortgage, type: :model do
           expect(model).to be_invalid
         end
       end
+
+      context 'with incorrect down payment' do
+        before { model.down_payment = model.property_price + 1 }
+
+        it 'is invalid' do
+          expect(model).to be_invalid
+        end
+      end
     end
   end
 
