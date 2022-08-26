@@ -1,18 +1,18 @@
 class Mortgage < ApplicationRecord
   AMORTIZATION_PERIOD_OPTIONS = [5, 10, 15, 20, 25, 30] # Years of mortgages
 
-  attr_accessor :down_payment, :payment_schedule, :amortization_period
-
   validates_presence_of :property_price
   validates_presence_of :annual_interest_rate
   validates_presence_of :payment_per_payment
+  validates_presence_of :amortization_period
   validate :correct_amortization_period
   validates :down_payment, comparison: { less_than: :property_price }
 
   enum payment_schedule: [:monthly, :bi_weekly, :acc_bi_weekly]
 
   before_validation :cast_amortization_period_to_number
-  before_validation :calculate_payments
+  before_validation :calculate_total_loan_amount
+  before_validation :calculate_payment_per_period
 
   def self.amortization_period_collection
     collection = []
@@ -23,12 +23,15 @@ class Mortgage < ApplicationRecord
     collection
   end
 
-  #I experience very weird bug with enum not returning correct value. This is a dirty hack to make it work as expected.
-  def payment_schedule_val
-    Mortgage.payment_schedules.key read_attribute_before_type_cast(:payment_schedule)
+  def calculate_payment_per_period
+    p = total_loan_amount
+    r = per_payment_schedule_interest_rate
+    n = nb_of_payments_total
+
+    self.payment_per_payment = p * ( ( r * (1+r)**n ) / ( ((1+r)**n) + 1 ) )
   end
 
-  protected
+  #protected
 
   def correct_amortization_period
     unless AMORTIZATION_PERIOD_OPTIONS.include? amortization_period
@@ -40,8 +43,39 @@ class Mortgage < ApplicationRecord
     self.amortization_period = self.amortization_period&.to_i
   end
 
-  def calculate_payments
-    self.payment_per_payment = 10
+  def calculate_total_loan_amount
+    self.total_loan_amount = property_price - down_payment #TODO add insurance
+  end
+
+
+
+  def nb_of_payments_per_year
+    case payment_schedule
+    when 'monthly'
+      12
+    when 'bi_weekly'
+      26
+    when 'acc_bi_weekly'
+      26
+    end
+  end
+
+  def nb_of_payments_total
+    nb_of_payments_per_year * amortization_period
+  end
+
+  def per_payment_schedule_interest_rate
+    annual_interest_rate / nb_of_payments_total
+  end
+
+
+  def nb_of_payments_total
+    nb_of_payments_per_year * amortization_period
+  end
+
+  def payment_per_year
+    total_loan_amount = property_price #TODO - add insurance here
+
   end
 
 end

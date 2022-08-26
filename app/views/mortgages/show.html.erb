@@ -10,6 +10,11 @@
         <td><%= @mortgage.property_price %></td>
       </tr>
       <tr>
+        <th scope="row">1</th>
+        <td>Down Payment</td>
+        <td><%= @mortgage.down_payment %></td>
+      </tr>
+      <tr>
         <th scope="row">2</th>
         <td>Annual %</td>
         <td><%= @mortgage.annual_interest_rate %>%</td>
@@ -22,7 +27,7 @@
       <tr>
         <th scope="row">3</th>
         <td>Payment Schedule</td>
-        <td><%= @mortgage.payment_schedule_val %></td>
+        <td><%= @mortgage.payment_schedule %></td>
       </tr>
       </tbody>
     </table>
