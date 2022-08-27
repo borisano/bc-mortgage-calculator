@@ -1,3 +1,5 @@
+[![Rspec](https://github.com/borisano/bc-mortgage-calculator/actions/workflows/rspec.yml/badge.svg)](https://github.com/borisano/bc-mortgage-calculator/actions/workflows/rspec.yml)
+
 # Task
 
 ### Mortgage Calculator API
