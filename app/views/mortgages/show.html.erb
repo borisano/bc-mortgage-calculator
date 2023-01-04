@@ -1,12 +1,11 @@
-<h1>Your mortgage calculations</h1>
 <div class="row">
   <div class="col col-md-4">
-    <h4>You entered the following information:</h4>
+    <h4>This is the information that you entered (please review):</h4>
     <table class="table table-striped">
       <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>Mortgage Amount</td>
+        <td>The amount for mortgage</td>
         <td><%= number_to_currency @mortgage.property_price %></td>
       </tr>
       <tr>
@@ -21,12 +20,12 @@
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Amortization Period</td>
+        <td>Amortization Period:  </td>
         <td><%= @mortgage.amortization_period %> years</td>
       </tr>
       <tr>
         <th scope="row">3</th>
-        <td>Payment Schedule</td>
+        <td>Payment Schedule:</td>
         <td><%= @mortgage.payment_schedule %></td>
       </tr>
       </tbody>
@@ -65,3 +64,5 @@
     </table>
   </div>
 </div>
+
+This is all we have on your mortgage.
